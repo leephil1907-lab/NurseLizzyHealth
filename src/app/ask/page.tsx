@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = { title: 'Suggest a Health Topic', description: 'Suggest a topic for a future plain-language health explainer.' };
-const topicMessage = encodeURIComponent('Hello Nurse Lizzy Health, I would like to suggest a topic for a future general health explainer.');
+const topicMessage = encodeURIComponent('Hello Nurse Lizzy, I would like to suggest a topic for a future general health explainer.');
 
 export default function Ask() {
   return <main>
