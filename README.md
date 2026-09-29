@@ -1,21 +1,25 @@
 # Nurse Lizzy Health
 
-Editorial health-education website built with Next.js, TypeScript, and Tailwind CSS.
+Responsive health-education website built with Next.js, TypeScript and Tailwind CSS.
 
-## Local development
+## Run locally
 
-- Node.js 20.9+ (for Next.js 15)
-- `npm install`
-- `npm run dev`
-- `npm run build`
+Requires Node.js 20.9+.
 
-## Before public launch
+```bash
+npm ci
+npm run dev
+```
 
-- Confirm the final website domain and set canonical/Open Graph metadata for it.
-- Replace guide previews with finished PDFs, final pricing, and real Selar checkout URLs. Until then, guide pages say “Coming soon” and route enquiries to the WhatsApp support number.
-- Connect the newsletter and Ask Nurse Lizzy forms to real providers before accepting submissions; the current UI explicitly says they do not send or save anything.
-- Review health content and legal policies with the appropriate qualified professionals. No article is marked medically reviewed.
-- Configure the private admin application and content database separately before relying on browser-independent editing.
-- Replace externally hosted Unsplash photos and Google Fonts if you want fully self-hosted assets.
+Build for deployment with `npm run build` and serve with `npm start`.
 
-The production build should be run in a CI/deployment environment with sufficient memory. In this workspace, TypeScript checking passes, but the Next.js build worker was killed by the sandbox’s memory limit during compilation; do not treat that local SIGKILL as a successful production build.
+## Included
+
+- Editorial homepage with five-slide carousel and WhatsApp support.
+- Health Knowledge Hub, health explainers, articles and topic search.
+- Health guides, glossary, quiz, checklist, BMI estimator and saved articles.
+- Privacy, terms and health disclaimer pages.
+
+## Not connected yet
+
+The private admin dashboard, Selar checkout/PDF delivery, consulting bookings, newsletter and question-form submissions still need setup. Guide listings are marked “Coming soon”; forms clearly indicate when they are not connected.
