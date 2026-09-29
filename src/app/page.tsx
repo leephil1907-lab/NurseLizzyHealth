@@ -1,18 +1,46 @@
-import Link from 'next/link';import {articles,guides} from '../data';import {Newsletter} from './interactive';import {KnowledgeTopics,LearningCards,WeeklyTip,DailyFact,MythFact,Discovery} from './learning-tools';import {HeroCarousel} from './hero-carousel';
-const photo=(id:string)=>`https://images.unsplash.com/${id}?auto=format&fit=crop&w=1000&q=85`;
-function Card({item,href,kind='article'}:{item:any;href:string;kind?:string}){return <Link href={href} className="card"><div className="card-image" style={{backgroundImage:`url('${photo(item.image)}')`}}/><div className="card-body"><span className="eyebrow">{item.category||item.tag}</span><h3>{item.title}</h3><p className="meta">{kind==='article'?`${item.date} · ${item.read}`:item.price+' · PDF guide'}</p><span className="read-link">{kind==='article'?'READ ARTICLE':'EXPLORE GUIDE'}　↗</span></div></Link>}
-export default function Home(){return <main>
-<HeroCarousel/>
-<section className="section"><div className="wrap"><div className="section-head"><div><span className="eyebrow">A place to begin</span><h2>Popular health topics</h2></div><Link className="read-link" href="/hub">VISIT THE KNOWLEDGE HUB　→</Link></div><KnowledgeTopics/></div></section>
-<section className="section soft"><div className="wrap"><WeeklyTip/></div></section>
-<section className="section"><div className="wrap"><div className="featured-article"><div className="featured-image" style={{backgroundImage:`url('${photo(articles[0].image)}')`}}/><div className="featured-copy"><span className="eyebrow">FEATURED ARTICLE · {articles[0].category}</span><h2>{articles[0].title}</h2><p>{articles[0].excerpt}</p><p className="meta">{articles[0].date} · {articles[0].read}</p><Link className="btn" href={`/blog/${articles[0].slug}`}>Read Article　→</Link></div></div></div></section>
-<section className="section soft"><div className="wrap"><div className="section-head"><div><span className="eyebrow">Health explained simply</span><h2>Understand the basics</h2></div><Link className="read-link" href="/learn">ALL EXPLAINERS　→</Link></div><LearningCards limit={3}/></div></section>
-<section className="section"><div className="wrap"><div className="section-head"><div><span className="eyebrow">The latest</span><h2>From the journal</h2></div><Link className="read-link" href="/blog">VIEW ALL ARTICLES　→</Link></div><div className="cards">{articles.slice(1,4).map(a=><Card key={a.slug} item={a} href={`/blog/${a.slug}`}/>)}</div></div></section>
-<section className="section"><div className="wrap"><DailyFact/></div></section>
-<section className="section soft"><div className="wrap"><div className="section-head"><div><span className="eyebrow">A little clarity goes a long way</span><h2>Myth vs fact</h2></div></div><MythFact/></div></section>
-<section className="section"><div className="wrap"><div className="section-head"><div><span className="eyebrow">Explore at your own pace</span><h2>The Health Knowledge Hub</h2></div><Link className="read-link" href="/hub">EXPLORE ALL TOPICS　→</Link></div><KnowledgeTopics/></div></section>
-<section className="section soft"><div className="wrap"><div className="section-head"><div><span className="eyebrow">Personalize your browsing</span><h2>What are you interested in?</h2></div></div><Discovery/></div></section>
-<section className="section"><div className="wrap"><div className="section-head"><div><span className="eyebrow">Practical knowledge, to keep</span><h2>Featured health guides</h2></div><Link className="read-link" href="/guides">BROWSE THE GUIDES　→</Link></div><div className="cards">{guides.map(g=><Card key={g.slug} item={g} href={`/guides/${g.slug}`} kind="guide"/>)}</div></div></section>
-<section className="section" style={{paddingTop:0}}><div className="wrap resource"><div className="resource-pic" style={{backgroundImage:`url('${photo('photo-1455390582262-044cdead277a')}')`}}/><div className="resource-copy"><span className="eyebrow">A little something, on us</span><h2>Useful tools for real life.</h2><p>Try an educational quiz, browse plain-language definitions, or use our reflective checklist. Free learning for everyone—no purchase needed.</p><Link className="btn" href="/tools">Explore free learning tools　→</Link><p><Link className="read-link" href="/glossary">A–Z glossary</Link>　<Link className="read-link" href="/start-here">Learning paths</Link></p></div></div></section>
-<section className="section soft"><div className="wrap" style={{maxWidth:760,textAlign:'center'}}><span className="eyebrow">Trust & transparency</span><h2 className="serif" style={{fontSize:40,fontWeight:500}}>Health information should feel human.</h2><p style={{color:'#555',lineHeight:1.9}}>We aim to explain health topics in clear, calm language, use reputable public references, and be transparent about what content is—and is not—medically reviewed. Our educational content supports, but never replaces, professional care.</p><Link href="/about" className="read-link">OUR EDITORIAL APPROACH　→</Link></div></section>
-<section className="newsletter"><div className="wrap newsletter-in"><div><span className="eyebrow" style={{color:'#ef9691'}}>The Nurse Lizzy Health Letter</span><h2>Stay informed. Stay well.</h2><p>One useful health lesson every week. Email delivery is not connected yet; the form will be enabled when a provider is in place.</p></div><Newsletter/></div></section></main>}
+import Link from 'next/link';
+import { articles } from '../data';
+import { KnowledgeTopics, LearningCards, WeeklyTip, DailyFact, MythFact, Discovery } from './learning-tools';
+import { HeroCarousel } from './hero-carousel';
+
+const photo = (id: string) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=1000&q=85`;
+type CardItem = { slug: string; image: string; title: string; category: string; excerpt: string; read: string };
+
+function ArticleCard({ item }: { item: CardItem }) {
+  return <Link href={`/blog/${item.slug}`} className="card">
+    <div className="card-image" style={{ backgroundImage: `url('${photo(item.image)}')` }} />
+    <div className="card-body">
+      <span className="eyebrow">{item.category}</span>
+      <h3>{item.title}</h3>
+      <p className="meta">{item.read}</p>
+      <span className="read-link">READ ARTICLE　↗</span>
+    </div>
+  </Link>;
+}
+
+export default function Home() {
+  const featured = articles[0];
+  return <main>
+    <HeroCarousel />
+
+    <section className="section soft home-transparency">
+      <div className="wrap home-transparency-inner">
+        <div><span className="eyebrow">About our health information</span><p><strong>Nurse Lizzy Health is an educational resource.</strong> No individual clinical credentials or independent medical reviewer are currently identified on this website.</p></div>
+        <p className="home-transparency-note">Our content is for general education—not diagnosis, treatment, or a substitute for personal care from a qualified health professional.</p>
+        <div className="home-transparency-links"><Link href="/about" className="read-link">EDITORIAL APPROACH　↗</Link><Link href="/ask" className="read-link">SUGGEST A TOPIC　↗</Link></div>
+      </div>
+    </section>
+
+    <section className="section"><div className="wrap"><div className="section-head"><div><span className="eyebrow">A place to begin</span><h2>Popular health topics</h2></div><Link className="read-link" href="/hub">VISIT THE KNOWLEDGE HUB　→</Link></div><KnowledgeTopics limit={6}/></div></section>
+    <section className="section soft"><div className="wrap"><WeeklyTip/></div></section>
+    <section className="section"><div className="wrap"><div className="featured-article"><div className="featured-image" style={{ backgroundImage: `url('${photo(featured.image)}')` }}/><div className="featured-copy"><span className="eyebrow">FEATURED ARTICLE · {featured.category}</span><h2>{featured.title}</h2><p>{featured.excerpt}</p><p className="meta">{featured.read}</p><Link className="btn" href={`/blog/${featured.slug}`}>Read Article　→</Link></div></div></div></section>
+    <section className="section soft"><div className="wrap"><div className="section-head"><div><span className="eyebrow">Health explained simply</span><h2>Understand the basics</h2></div><Link className="read-link" href="/learn">ALL EXPLAINERS　→</Link></div><LearningCards limit={3}/></div></section>
+    <section className="section"><div className="wrap"><div className="section-head"><div><span className="eyebrow">From the journal</span><h2>Thoughtful reads for real life</h2></div><Link className="read-link" href="/blog">VIEW ALL ARTICLES　→</Link></div><div className="cards">{articles.slice(1,4).map(article=><ArticleCard key={article.slug} item={article}/>)}</div></div></section>
+    <section className="section"><div className="wrap"><DailyFact/></div></section>
+    <section className="section soft"><div className="wrap"><div className="section-head"><div><span className="eyebrow">A little clarity goes a long way</span><h2>Myth vs fact</h2></div></div><MythFact/></div></section>
+    <section className="section"><div className="wrap"><div className="section-head"><div><span className="eyebrow">Explore at your own pace</span><h2>The Health Knowledge Hub</h2></div><Link className="read-link" href="/hub">EXPLORE ALL TOPICS　→</Link></div><KnowledgeTopics/></div></section>
+    <section className="section soft"><div className="wrap"><div className="section-head"><div><span className="eyebrow">Personalize your browsing</span><h2>What are you interested in?</h2></div></div><Discovery/></div></section>
+
+    <section className="section"><div className="wrap resource"><div className="resource-pic" style={{ backgroundImage: `url('${photo('photo-1455390582262-044cdead277a')}')` }}/><div className="resource-copy"><span className="eyebrow">Free, practical learning</span><h2>Useful tools for real life.</h2><p>Explore the interactive learning tools, look up a health term, or follow a guided path through foundational topics. No purchase needed.</p><Link className="btn" href="/tools">Explore free learning tools　→</Link><p><Link className="read-link" href="/glossary">A–Z glossary</Link>　<Link className="read-link" href="/start-here">Learning paths</Link></p></div></div></section>
+  </main>;
+}
