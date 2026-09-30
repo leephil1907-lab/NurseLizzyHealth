@@ -47,6 +47,7 @@ export default function ResourceLibraryPage() {
         {!q && category==='All' && <div className="library-intro-grid">
           <Link href="/hub" className="library-feature"><span className="library-icon"><BookOpen size={22}/></span><div><span className="eyebrow">Start with a topic</span><h2>Health Knowledge Hub</h2><p>Explore broad subjects from nutrition and women’s health to heart health, mental wellness, sleep and healthy aging.</p></div><ArrowUpRight/></Link>
           <Link href="/learn" className="library-feature dark"><span className="library-icon"><Stethoscope size={22}/></span><div><span className="eyebrow">Understand a subject</span><h2>Health Explainers</h2><p>Plain-language introductions to conditions, symptoms, measurements and everyday health concepts.</p></div><ArrowUpRight/></Link>
+          <Link href="/resources/visual-guides" className="library-feature visual-feature"><span className="library-icon"><Sparkles size={22}/></span><div><span className="eyebrow">See it simply</span><h2>Visual Health Guides</h2><p>Quick learning cards for hydration, sleep, nutrition, movement and everyday health concepts.</p></div><ArrowUpRight/></Link>
         </div>}
 
         <div className="library-results" aria-live="polite">
