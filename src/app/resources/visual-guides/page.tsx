@@ -1,3 +1,4 @@
+import './visual-guides.css';
 import Link from 'next/link';
 import { ArrowUpRight, Droplets, HeartPulse, Moon, Salad, Activity, ShieldCheck } from 'lucide-react';
 
