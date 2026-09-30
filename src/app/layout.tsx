@@ -1,6 +1,6 @@
 import './globals.css';
 import type { Metadata, Viewport } from 'next';
-import { SiteChrome } from './chrome';
+import { SiteChrome, SiteFooter } from './chrome';
 import { ServiceWorkerRegister } from './service-worker-register';
 
 export const metadata: Metadata = {
@@ -50,6 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ServiceWorkerRegister />
         <SiteChrome />
         <div className="page-enter">{children}</div>
+        <SiteFooter />
       </body>
     </html>
   );

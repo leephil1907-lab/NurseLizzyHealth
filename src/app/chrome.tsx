@@ -19,5 +19,11 @@ function Footer() {
 export function SiteChrome() {
   const pathname = usePathname();
   if (pathname?.startsWith('/admin')) return null;
-  return <><InteractiveHeader/><Footer/><a className="whatsapp-float" href="https://wa.me/2349150484921?text=Hello%20Nurse%20Lizzy%2C%20I%20have%20a%20question." target="_blank" rel="noopener noreferrer" aria-label="Chat with Nurse Lizzy Health on WhatsApp"><WhatsAppIcon/><span>Chat with us</span></a></>;
+  return <><InteractiveHeader/><a className="whatsapp-float" href="https://wa.me/2349150484921?text=Hello%20Nurse%20Lizzy%2C%20I%20have%20a%20question." target="_blank" rel="noopener noreferrer" aria-label="Chat with Nurse Lizzy Health on WhatsApp"><WhatsAppIcon/><span>Chat with us</span></a></>;
+}
+
+export function SiteFooter() {
+  const pathname = usePathname();
+  if (pathname?.startsWith('/admin')) return null;
+  return <Footer/>;
 }
