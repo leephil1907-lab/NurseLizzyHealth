@@ -1,5 +1,7 @@
 import './globals.css';
 import './motionsites.css';
+import './resources/resource-detail/resource-detail.css';
+import './resources/visual-guides/visual-guides.css';
 import './resource-library.css';
 import type { Metadata, Viewport } from 'next';
 import { SiteChrome, SiteFooter } from './chrome';
