@@ -7,8 +7,9 @@ export function generateStaticParams() {
   return learnTopics.map(topic => ({ slug: topic.slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }) {
-  const topic = learnTopics.find(item => item.slug === params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const topic = learnTopics.find(item => item.slug === slug);
   return {
     title: topic ? topic.title.replace(/^Learn About /, '') : 'Health Resource',
     description: topic?.summary || 'Plain-language health education from Nurse Lizzy Health.',
@@ -21,8 +22,9 @@ const sources = [
   { label: 'CDC Health Topics', url: 'https://www.cdc.gov/health-topics/' },
 ];
 
-export default function ResourcePage({ params }: { params: { slug: string } }) {
-  const topic = learnTopics.find(item => item.slug === params.slug);
+export default async function ResourcePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const topic = learnTopics.find(item => item.slug === slug);
   if (!topic) notFound();
 
   const related = learnTopics
