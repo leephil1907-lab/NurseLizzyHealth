@@ -15,7 +15,7 @@ export default function ResourceLibraryPage() {
 
   const results = useMemo(() => {
     const topicItems = knowledgeTopics.map(t => ({ type:'Topics', title:t.name, description:t.intro, href:`/hub/${t.slug}`, meta:'Health topic' }));
-    const learnItems = learnTopics.map(t => ({ type:'Conditions & Learn', title:t.title.replace(/^Learn About /,''), description:t.summary, href:`/learn/${t.slug}`, meta:t.category }));
+    const learnItems = learnTopics.map(t => ({ type:'Conditions & Learn', title:t.title.replace(/^Learn About /,''), description:t.summary, href:`/resources/${t.slug}`, meta:t.category }));
     const articleItems = articles.map(a => ({ type:'Articles', title:a.title, description:a.excerpt, href:`/blog/${a.slug}`, meta:a.category }));
     const glossaryItems = glossary.map(([term,definition]) => ({ type:'Glossary', title:term, description:definition, href:`/glossary#${term.toLowerCase().replace(/[^a-z0-9]+/g,'-')}`, meta:'A–Z glossary' }));
     return [...topicItems,...learnItems,...articleItems,...glossaryItems].filter(item => {
@@ -47,6 +47,7 @@ export default function ResourceLibraryPage() {
         {!q && category==='All' && <div className="library-intro-grid">
           <Link href="/hub" className="library-feature"><span className="library-icon"><BookOpen size={22}/></span><div><span className="eyebrow">Start with a topic</span><h2>Health Knowledge Hub</h2><p>Explore broad subjects from nutrition and women’s health to heart health, mental wellness, sleep and healthy aging.</p></div><ArrowUpRight/></Link>
           <Link href="/learn" className="library-feature dark"><span className="library-icon"><Stethoscope size={22}/></span><div><span className="eyebrow">Understand a subject</span><h2>Health Explainers</h2><p>Plain-language introductions to conditions, symptoms, measurements and everyday health concepts.</p></div><ArrowUpRight/></Link>
+          <Link href="/resources/visual-guides" className="library-feature visual-feature"><span className="library-icon"><Sparkles size={22}/></span><div><span className="eyebrow">See it simply</span><h2>Visual Health Guides</h2><p>Quick learning cards for hydration, sleep, nutrition, movement and everyday health concepts.</p></div><ArrowUpRight/></Link>
         </div>}
 
         <div className="library-results" aria-live="polite">
