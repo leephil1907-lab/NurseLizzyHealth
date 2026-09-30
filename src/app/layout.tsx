@@ -1,6 +1,7 @@
 import './globals.css';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { SiteChrome } from './chrome';
+import { ServiceWorkerRegister } from './service-worker-register';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://nurselizzyhealth.vercel.app'),
@@ -8,9 +9,21 @@ export const metadata: Metadata = {
     default: 'Nurse Lizzy Health | Better health starts with better information',
     template: '%s | Nurse Lizzy Health',
   },
+  applicationName: 'Nurse Lizzy Health',
   description: 'Evidence-informed health and wellness content for everyday life.',
+  manifest: '/manifest.webmanifest',
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icons/icon-192.png', type: 'image/png', sizes: '192x192' },
+      { url: '/icons/icon-512.png', type: 'image/png', sizes: '512x512' },
+    ],
+    apple: [{ url: '/icons/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
+  },
+  appleWebApp: { capable: true, title: 'Nurse Lizzy Health', statusBarStyle: 'default' },
   openGraph: {
     type: 'website',
+    url: 'https://nurselizzyhealth.vercel.app',
     siteName: 'Nurse Lizzy Health',
     title: 'Nurse Lizzy Health',
     description: 'Evidence-informed health and wellness content for everyday life.',
@@ -24,10 +37,17 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#D71920',
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
+        <ServiceWorkerRegister />
         <SiteChrome />
         <div className="page-enter">{children}</div>
       </body>
