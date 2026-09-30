@@ -1,3 +1,4 @@
+import './resource-detail.css';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, ArrowUpRight, BookOpen, ExternalLink, ShieldCheck } from 'lucide-react';
