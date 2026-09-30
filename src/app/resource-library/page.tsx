@@ -15,7 +15,7 @@ export default function ResourceLibraryPage() {
 
   const results = useMemo(() => {
     const topicItems = knowledgeTopics.map(t => ({ type:'Topics', title:t.name, description:t.intro, href:`/hub/${t.slug}`, meta:'Health topic' }));
-    const learnItems = learnTopics.map(t => ({ type:'Conditions & Learn', title:t.title.replace(/^Learn About /,''), description:t.summary, href:`/learn/${t.slug}`, meta:t.category }));
+    const learnItems = learnTopics.map(t => ({ type:'Conditions & Learn', title:t.title.replace(/^Learn About /,''), description:t.summary, href:`/resources/${t.slug}`, meta:t.category }));
     const articleItems = articles.map(a => ({ type:'Articles', title:a.title, description:a.excerpt, href:`/blog/${a.slug}`, meta:a.category }));
     const glossaryItems = glossary.map(([term,definition]) => ({ type:'Glossary', title:term, description:definition, href:`/glossary#${term.toLowerCase().replace(/[^a-z0-9]+/g,'-')}`, meta:'A–Z glossary' }));
     return [...topicItems,...learnItems,...articleItems,...glossaryItems].filter(item => {
