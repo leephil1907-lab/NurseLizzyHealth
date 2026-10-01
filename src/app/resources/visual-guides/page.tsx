@@ -1,17 +1,10 @@
-import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowUpRight, Droplets, HeartPulse, Moon, Salad, Activity, ShieldCheck } from 'lucide-react';
-
-export const metadata: Metadata = {
-  title: 'Visual Health Guides',
-  description: 'Short visual learning guides for common health concepts from Nurse Lizzy Health.',
-  alternates: { canonical: '/resources/visual-guides' },
-};
 
 const guides = [
  {title:'How to read a health resource',tag:'Health literacy',icon:ShieldCheck,steps:['Start with the definition','Check what the evidence says','Notice what varies by person','Write down questions for a professional']},
  {title:'Understanding blood pressure',tag:'Heart health',icon:HeartPulse,steps:['Know what systolic means','Know what diastolic means','Look at readings in context','Discuss repeated concerns with a professional']},
- {title:'Hydration basics',tag:'Everyday health',icon:Droplets,steps:['Notice thirst and fluid loss','Consider heat and activity','Follow individual fluid guidance','Seek help when severe symptoms appear']},
+ {title:'Hydration basics',tag:'Everyday health',icon:Droplets,steps:['Notice thirst and fluid loss','Consider heat and activity','Follow individual fluid guidance','Seek individual fluid guidance','Seek help when severe symptoms appear']},
  {title:'Building a balanced meal',tag:'Nutrition',icon:Salad,steps:['Include variety','Add a protein source','Include vegetables or fruit','Adapt to your needs, culture and access']},
  {title:'Starting movement gradually',tag:'Fitness',icon:Activity,steps:['Choose something manageable','Build gradually','Allow recovery','Adapt for health conditions or injuries']},
  {title:'A calmer sleep routine',tag:'Sleep',icon:Moon,steps:['Keep a regular schedule','Create a comfortable sleep environment','Reduce stimulating activities before bed','Get help when sleep problems persist']},
