@@ -2,11 +2,7 @@
 const CACHE_NAME = 'nurse-lizzy-health-shell-v1';
 const PRECACHE_URLS = [
   '/offline.html',
-  '/favicon.ico',
-  '/icons/icon-192.png',
-  '/icons/icon-512.png',
-  '/icons/maskable-512.png',
-  '/icons/apple-touch-icon.png',
+  '/nurse-lizzy-health-mark.svg',
 ];
 
 self.addEventListener('install', (event) => {
@@ -45,7 +41,7 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  if (url.pathname.startsWith('/icons/') || url.pathname === '/favicon.ico') {
+  if (url.pathname === '/nurse-lizzy-health-mark.svg') {
     event.respondWith((async () => {
       const cache = await caches.open(CACHE_NAME);
       const cached = await cache.match(request);
