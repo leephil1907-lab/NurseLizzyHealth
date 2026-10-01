@@ -1,4 +1,8 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
+
+export const metadata: Metadata = { title: 'Visual Health Guides', description: 'Short visual learning guides for common health concepts from Nurse Lizzy Health.', alternates: { canonical: '/resources/visual-guides' } };
+
 import { ArrowUpRight, Droplets, HeartPulse, Moon, Salad, Activity, ShieldCheck } from 'lucide-react';
 
 const guides = [
