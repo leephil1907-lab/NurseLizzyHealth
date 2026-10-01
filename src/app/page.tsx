@@ -1,7 +1,10 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { articles } from '../data';
 import { KnowledgeTopics, LearningCards, WeeklyTip, DailyFact, MythFact, Discovery } from './learning-tools';
 import { HeroCarousel } from './hero-carousel';
+
+export const metadata: Metadata = { title: 'Nurse Lizzy Health', description: 'Clear, practical health tips, explainers, and trusted health information for everyday life.', alternates: { canonical: '/' } };
 
 type CardItem = { slug: string; image: string; title: string; category: string; excerpt: string; read: string };
 const photo = (id: string) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=1400&q=88`;
