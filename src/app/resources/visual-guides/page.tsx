@@ -1,9 +1,12 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-
-export const metadata: Metadata = { title: 'Visual Health Guides', description: 'Short visual learning guides for common health concepts from Nurse Lizzy Health.', alternates: { canonical: '/resources/visual-guides' } };
-
 import { ArrowUpRight, Droplets, HeartPulse, Moon, Salad, Activity, ShieldCheck } from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: 'Visual Health Guides',
+  description: 'Short visual learning guides for common health concepts from Nurse Lizzy Health.',
+  alternates: { canonical: '/resources/visual-guides' },
+};
 
 const guides = [
  {title:'How to read a health resource',tag:'Health literacy',icon:ShieldCheck,steps:['Start with the definition','Check what the evidence says','Notice what varies by person','Write down questions for a professional']},
