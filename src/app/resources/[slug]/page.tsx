@@ -13,6 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: topic ? topic.title.replace(/^Learn About /, '') : 'Health Resource',
     description: topic?.summary || 'Plain-language health education from Nurse Lizzy Health.',
+    alternates: { canonical: `/resources/${slug}` },
   };
 }
 
