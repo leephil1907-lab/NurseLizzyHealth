@@ -3,6 +3,8 @@ const CACHE_NAME = 'nurse-lizzy-health-shell-v1';
 const PRECACHE_URLS = [
   '/offline.html',
   '/nurse-lizzy-health-mark.svg',
+  '/pwa-icon-192',
+  '/pwa-icon-512',
 ];
 
 self.addEventListener('install', (event) => {
@@ -41,7 +43,7 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  if (url.pathname === '/nurse-lizzy-health-mark.svg') {
+  if (url.pathname === '/nurse-lizzy-health-mark.svg' || url.pathname === '/pwa-icon-192' || url.pathname === '/pwa-icon-512') {
     event.respondWith((async () => {
       const cache = await caches.open(CACHE_NAME);
       const cached = await cache.match(request);
