@@ -1,7 +1,4 @@
-import type { Metadata } from 'next';
 'use client';
-
-export const metadata: Metadata = { title: 'Health Resource Library', description: 'Searchable health topics, explainers, articles, and glossary resources from Nurse Lizzy Health.', alternates: { canonical: '/resource-library' } };
 
 
 import Link from 'next/link';
