@@ -15,9 +15,8 @@ export default function manifest(): MetadataRoute.Manifest {
     lang: 'en',
     categories: ['health', 'education'],
     icons: [
-      { src: '/nurse-lizzy-health-mark.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any' },
-      { src: '/nurse-lizzy-health-mark.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any' },
-      { src: '/nurse-lizzy-health-mark.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'maskable' },
+      { src: '/pwa-icon-192', sizes: '192x192', type: 'image/png', purpose: 'any' },
+      { src: '/pwa-icon-512', sizes: '512x512', type: 'image/png', purpose: 'any maskable' },
     ],
   };
 }
